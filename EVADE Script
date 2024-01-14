@@ -1,0 +1,53 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "EVADE By GUIZIN_GgFF", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Main"
+})
+Tab:AddButton({
+	Name = "Respawn!",
+	Callback = function()
+      game:GetService("ReplicatedStorage").Events.Respawn:FireServer()
+
+      		print("button pressed")
+  	end    
+})
+Tab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 0,
+	Max = 199,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WS",
+	Callback = function(Value)
+      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+		print(Value)
+	end    
+})
+Tab:AddSlider({
+	Name = "JumpPower",
+	Min = 0,
+	Max = 120,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WS",
+	Callback = function(Value)
+      game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+		print(Value)
+	end    
+})
+Tab:AddButton({
+	Name = "InfinitJump!",
+	Callback = function()
+      local InfiniteJumpEnabled = true
+      game:GetService("userInputService").JumpRequest if InfiniteJumpEnabled then
+        game:GetService"pplayers.LocalPlayer.Character.Humanoid":ChangeState("Jumping")
+      		print("button pressed")
+  	end    
+})
